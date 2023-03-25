@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login using Autoflow</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/favicon.svg" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+      body,
+      html {
+        overflow: hidden;
+      }
+      body {
+        old-margin-left: -10px !important;
+        old-margin-top: -2px !important;
+      }
+      * {
+        margin: 0px !important;
+        padding: 0px !important;
+      }
+      .loader,
+      .loader:before,
+      .loader:after {
+        border-radius: 50%;
+        width: 2.5em;
+        height: 2.5em;
+        animation-fill-mode: both;
+        animation: bblFadInOut 1.8s infinite ease-in-out;
+      }
+      .lds-ellipsis {
+        width: 80px;
+        height: 80px;
+        position: absolute !important;
+        top: -20px;
+        left: 40px;
+      }
+      .lds-ellipsis div {
+        position: absolute;
+        top: 33px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #6e6e6e;
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+      }
+      .lds-ellipsis div:nth-child(1) {
+        left: 8px;
+        animation: lds-ellipsis1 0.6s infinite;
+      }
+      .lds-ellipsis div:nth-child(2) {
+        left: 8px;
+        animation: lds-ellipsis2 0.6s infinite;
+      }
+      .lds-ellipsis div:nth-child(3) {
+        left: 32px;
+        animation: lds-ellipsis2 0.6s infinite;
+      }
+      .lds-ellipsis div:nth-child(4) {
+        left: 56px;
+        animation: lds-ellipsis3 0.6s infinite;
+      }
+      @keyframes lds-ellipsis1 {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes lds-ellipsis3 {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0);
+        }
+      }
+      @keyframes lds-ellipsis2 {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(24px, 0);
+        }
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+      * {
+        font-family: "Inter", sans-serif;
+      }
+      a {
+        transition: all 0.3s;
+      }
+      a:hover {
+        opacity: 0.8 !important;
+        transform: scale(0.8) !important;
+      }
+      .pb {
+        color: black;
+        text-decoration: none;
+        opacity: 0.35;
+        font-size: 14px;
+        transform: scale(0.75);
+        margin-top: 0px !important;
+        display: block;
+        text-align: center;
+      }
+      div > div > div > div[role="button"] > div > div {
+    margin-left: 10px!important;
+}
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; flex-direction: column; max-width: 100%;">
+      <div
+        id="g_id_onload"
+        data-client_id="929057183567-jrtmt5kuapm20h8df12tsqm5ofn7ti5c.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-callback="gotCredential"
+        data-nonce=""
+        data-auto_prompt="false"
+      ></div>
+
+      <div
+        class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="left"
+        style="transition: all 0.2s"
+      ></div>
+      <div class="lds-ellipsis" style="display: none">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <a href="https://authflow.glitch.me" class="pb" target="_blank"
+        >⚡ Authflow</a
+      >
+    </div>
+  </body>
+  <script src="/assets/sec.js"></script>
+  <script>
+    var origin = decodeURIComponent(
+      new URLSearchParams(window.location.search).get("o")
+    );
+    try {
+      new URL(origin)
+    } catch (e) {
+      authError(604)
+    }
+    if (window.getIsBlocked == "Y") {
+      authError(603)
+    }
+    if (origin == "null") {
+      origin = "*";
+    }
+    function gotCredential(a) {
+      window.parent.postMessage(
+        {
+          jwt: a.credential,
+          full_response: a,
+        },
+        origin
+      );
+      document.querySelector(".g_id_signin").style.pointerEvents = "none";
+      document.querySelector(".g_id_signin").style.opacity = "0.5";
+      document.querySelector(".lds-ellipsis").style.display = "block";
+    }
+    function authError(id) {
+      document.body.style = "margin-left: 0px!important";document.body.innerHTML = "Login error #" + id + ". (see bit.ly/3Wm8sdm)"
+    }
+  </script>
+</html>

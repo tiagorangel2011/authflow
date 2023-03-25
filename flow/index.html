@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login with Google | Autoflow</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/favicon.svg" />
+    <link rel="stylesheet" href="/flow/styles.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <main>
+      <img src="/assets/logo.svg" class="logo" />
+      <h1>Login to <span class="appname" id="name"></span></h1>
+      <p>Login with Google to continue</p>
+      <div
+        id="g_id_onload"
+        data-client_id="929057183567-jrtmt5kuapm20h8df12tsqm5ofn7ti5c.apps.googleusercontent.com"
+        data-ux_mode="popup"
+        data-callback="onSuccess"
+        data-auto_prompt="true"
+        data-cancel_on_tap_outside="false"
+        data-auto_select="false"
+        data-itp_support="true"
+      ></div>
+      <div
+        style="
+          margin: 0 auto;
+          max-width: 219px;
+          opacity: 0.3;
+          pointer-events: none;
+          transition: all 0.5s;
+        "
+        class="g_id_signin"
+        id="g-cap"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="continue_with"
+        data-size="large"
+        data-logo_alignment="left"
+      ></div>
+    </main>
+
+    <div class="info-circle">
+      <div
+        class="balloon"
+        onmouseover="document.querySelector('.balloon').classList.add('hover');"
+        onmouseout="document.querySelector('.balloon').classList.remove('hover');"
+      >
+        This is an auth page created with Authflow.
+        <div class="answers">
+          <a href="/">Learn more</a>
+          <a href="/docs/#!/report" class="report-screen-btn">Report this screen</a>
+          <a href="/docs/#!/privacy" class="report-screen-btn">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div
+        class="circle"
+        onmouseover="document.querySelector('.balloon').classList.add('hover');"
+        onmouseout="document.querySelector('.balloon').classList.remove('hover');"
+      >
+        ?
+      </div>
+    </div>
+    <script src="/assets/sec.js"></script>
+    <script src="/flow/utils.js"></script>
+    <script src="/flow/script.js"></script>
+  </body>
+</html>

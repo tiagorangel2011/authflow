@@ -1,0 +1,243 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box !important;
+}
+:root {
+  --primary: #9747ff;
+  --nav-size: 70px;
+  --font-stack: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+}
+@media only screen and (max-width: 650px) {
+  .app {
+    display: block !important;
+  }
+
+  .sidebar {
+    width: 100vw !important;
+    max-width: calc(100vw - 17px) !important;
+    height: fit-content !important;
+    border: none !important;
+    padding: 10px !important;
+  }
+
+  .main.prose {
+    height: fit-content !important;
+  }
+}
+.nav {
+  padding: 17px 35px;
+  height: var(--nav-size);
+  border-bottom: 1px solid rgb(211, 220, 228);
+  display: flex;
+  align-items: center;
+}
+.app {
+  display: flex;
+}
+.app .sidebar {
+  width: 300px;
+  min-width: 300px;
+  padding: 20px;
+  background-color: #f5f7f9;
+  height: calc(100vh - var(--nav-size));
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border-right: 1px solid rgb(211, 220, 228);
+  position: relative;
+  gap: 5px;
+}
+.app .main {
+  width: 100%;
+  padding: 50px;
+  height: calc(100vh - var(--nav-size));
+  overflow: auto;
+  max-width: inherit;
+}
+.app .page {
+  max-width: 65ch;
+  margin: 0px auto;
+}
+.sidebar a {
+  padding: 8px 15px;
+  color: rgb(92, 105, 117);
+  transition: all 0.19s;
+  border-radius: 5px;
+}
+.sidebar a:hover {
+  background-color: rgb(236, 239, 241);
+}
+.sidebar a.active {
+  color: var(--primary);
+  background-color: white;
+  box-shadow: 0px 0px 0px 1px rgba(211, 220, 228, 1) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(211, 220, 228, 1) inset;
+  -moz-box-shadow: 0px 0px 0px 1px rgba(211, 220, 228, 1) inset;
+}
+#nprogress {
+  pointer-events: none;
+}
+#nprogress .bar {
+  background: var(--primary);
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px var(--primary), 0 0 5px var(--primary);
+  opacity: 1;
+  -webkit-transform: rotate(3deg) translate(0, -4px);
+  -ms-transform: rotate(3deg) translate(0, -4px);
+  transform: rotate(3deg) translate(0, -4px);
+}
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-top-color: var(--primary);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+.nprogress-custom-parent #nprogress .bar,
+.nprogress-custom-parent #nprogress .spinner {
+  position: absolute;
+}
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+a:hover {
+  text-decoration: none;
+}
+pre[class*="language-"],
+pre[class*="language-"] * {
+  font-size: 15px;
+  line-height: 23px !important;
+  font-family: monospace;
+}
+
+button {
+  transition: opacity 0.3s, transform 0.3s;
+  font-family: var(--font-stack) !important;
+}
+button:hover {
+  opacity: 0.7;
+}
+button:active {
+  transform: scale(0.95);
+}
+button[data-copy] {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+button[data-copy] span,
+button[data-copy] svg {
+  font-size: 13px !important;
+  font-family: var(--font-stack) !important;
+}
+button[data-copy] svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #9747ff;
+}
+
+::selection {
+  color: white;
+  background: #9747ff;
+}
+
+.sidebar a.active::before {
+  content: "Selected: ";
+  position: absolute;
+  left: 0px;
+  background-color: var(--primary);
+  color: transparent;
+  width: 3px;
+  padding-top: 3.2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-top: -2px;
+  pointer-events: none;
+}
+
+.prose ul > li::before,
+.prose ol > li::before {
+  display: none;
+}
+
+.prose ul > li,
+.prose ol > li {
+  padding-left: 1em !important;
+}
+
+iframe[src="https://feedback.fish/widget?pid=ea520de6c06435&lang=en&whitelabel=false"]
+{
+  height: 179px !important;
+  overflow: hidden !important;
+}
+
+.feedback {
+  margin-left: auto;
+  color: #585757;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.feedback span {
+  margin-right: -2px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.feedback:hover span, .feedback:focus span {
+  margin-right: 0px;
+  opacity: 1;
+}
