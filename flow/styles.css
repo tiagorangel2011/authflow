@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=DM+Sans:wght@500&display=swap");
+:root {
+  --primary: #9747ff;
+}
+* {
+  font-family: "Inter", sans-serif;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  padding: 5%;
+}
+main {
+  max-width: 550px;
+  padding: 3%;
+  margin: 0px auto;
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+  text-align: center;
+}
+.logo {
+  height: 50px;
+}
+h1 {
+  font-weight: 500;
+}
+.appname {
+  text-decoration: none;
+  color: #7d3dd0;
+}
+.circle {
+  width: 60px;
+  transform: scale(0.7);
+  margin-right: -10px;
+  margin-bottom: -10px;
+  background-color: #9747ff21;
+  color: var(--primary);
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  box-shadow: 0 40px 40px rgb(10 33 65 / 10%), 0px 0px 2px rgb(0 0 0 / 13%);
+  font-size: 35px;
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 500;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.balloon {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 230px;
+  color: #262626;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 40px 40px rgb(10 33 65 / 10%), 0px 0px 2px rgb(0 0 0 / 13%);
+  text-align: left;
+  cursor: default;
+  transform: translateY(20px) scale(0.98);
+  transform-origin: top center;
+  transition: transform 0.25s, opacity 0.25s;
+  transition-timing-function: cubic-bezier(0.22, 0.2, 0.03, 1);
+  padding: 20px 25px;
+  pointer-events: none;
+  opacity: 0;
+  line-height: 26px;
+  letter-spacing: -0.011em;
+  margin-bottom: 15px;
+}
+.balloon:after {
+  content: "";
+  top: 100%;
+  right: 24px;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: 7px;
+  margin-left: -7px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  border-top-color: #fff;
+}
+.balloon.hover {
+  pointer-events: all;
+  transform: none;
+  opacity: 1;
+}
+.balloon > .answers {
+  margin-top: 4px;
+}
+.balloon > .answers > a {
+  display: block;
+  color: #9747ff !important;
+  text-decoration: underline !important;
+  padding-left: 17px;
+  background-image: url("https://authflow.glitch.me/assets/svg/arrow.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+.balloon > .answers > a:hover {
+  transform: translateX(2px);
+}
+.balloon::before {
+  content: "";
+  top: 100%;
+  right: 11px;
+  height: 71px;
+  width: 45px;
+  position: absolute;
+  border-width: 7px;
+  margin-left: -7px;
+}
+@media (max-width: 600px) {
+ main {
+     border: none;
+ }
+}

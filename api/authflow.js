@@ -1,0 +1,1 @@
+let authflow={login:function(a){window.location.href = "https://authflow.glitch.me/flow?client="+encodeURIComponent(btoa(a.app_name))+"&callback="+encodeURIComponent(btoa(a.redirect))+"&channel_id="+btoa(self.crypto.randomUUID())+"&ux_mode=api";}}
